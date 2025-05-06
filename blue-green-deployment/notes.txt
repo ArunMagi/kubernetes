@@ -1,0 +1,17 @@
+Blue-Green Deployment in Kubernetes is a release strategy that reduces downtime and risk by running two environments (Blue and Green) and switching traffic between them during updates.
+
+💡 Concept:
+Blue: The current (stable) version of your application.
+
+Green: The new version you want to deploy.
+
+Traffic is routed to either version using a Kubernetes Service.
+
+
+To switch blue to green 
+
+kubectl patch service my-app-service -p '{"spec":{"selector":{"app":"my-app","version":"green"}}}'
+
+To switch green to blue
+
+kubectl patch service my-app-service -p '{"spec":{"selector":{"app":"my-app","version":"blue"}}}'
